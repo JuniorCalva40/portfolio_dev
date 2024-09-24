@@ -3,20 +3,19 @@ import { Icon } from 'astro-icon/components'
 ---
 
 <nav
-	class="bg-transparent sticky top-3 z-50 border-[1px] border-white/20 backdrop-blur-lg rounded-3xl text-white text-sm flex justify-around items-center my-3"
+	class="bg-transparent max-w-4xl md:mx-auto sticky top-3 z-50 border border-white/20 backdrop-blur-lg rounded-3xl mx-5 text-white text-sm flex justify-between items-center my-3"
 >
-	<figure class="z-10">
+	<figure class="z-10 mx-4">
 		<Icon name="logos/brandLogo" size={60} />
 	</figure>
 
-	<div class="center gap-6">
-		<a href="#home">Home</a>
+	<div class="flex justify-between mx-4 items-center gap-8">
 		<a href="#projects">Proyectos</a>
 		<a href="#skills">Skills</a>
 		<a href="">Blog</a>
 	</div>
 
-	<div class="cursor-pointer">
+	<div class="cursor-pointer mx-4">
 		<Icon name="ui/language" size={25} />
 	</div>
 </nav>

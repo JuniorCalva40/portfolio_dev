@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components'
 import Title from '../ui/Title.astro'
+import SectionContainer from './SectionContainer.astro'
 
 const itemsExperience = [
 	{
@@ -22,11 +23,11 @@ const itemsExperience = [
 ]
 ---
 
-<section class="my-16">
+<SectionContainer class="my-16">
 	<Title variant="Title"> Experiencia</Title>
 	<Title variant="description" />
 
-	<div class="grid md:grid-cols-2 w-full mt-4 gap-4">
+	<div class="grid md:grid-cols-2 w-full mt-8 gap-4">
 		{
 			itemsExperience.map((item) => (
 				<article class="bg-gradient-to-b from-secondary to-violet-700/10 border-violet-500/50 px-3 py-2 rounded-lg border-t-2">
@@ -44,4 +45,4 @@ const itemsExperience = [
 			))
 		}
 	</div>
-</section>
+</SectionContainer>

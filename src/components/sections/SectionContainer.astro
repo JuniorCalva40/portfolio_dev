@@ -1,0 +1,22 @@
+---
+interface Props {
+	class?: string
+	margin: boolean
+	id?: string
+}
+
+const { class: className, margin = true, id } = Astro.props
+---
+
+<section
+	id={id}
+	class:list={[
+		'my-24 max-w-4xl mx-auto',
+		className,
+		{
+			'px-5 md:px-1': margin === true
+		}
+	]}
+>
+	<slot />
+</section>

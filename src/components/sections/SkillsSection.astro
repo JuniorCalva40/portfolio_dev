@@ -1,6 +1,7 @@
 ---
 import Title from '../ui/Title.astro'
 import VortexCanvas from '../ui/VortexCanvas.astro'
+import SectionContainer from './SectionContainer.astro'
 import SkillItem, { type Color } from './SkillItem.astro'
 
 const SkillsFrontend: { IconName?: string; color: Color; name: string }[] = [
@@ -114,27 +115,29 @@ const OtherTools: { IconName?: string; color: Color; name: string }[] = [
 ]
 ---
 
-<section id="skills" class="my-16">
+<SectionContainer id="skills" margin={false} class="my-24">
 	<Title variant="Title">Skills</Title>
 	<Title variant="description"
 		>Tecnologias que dan vida a mis ideas. Herramientas indispensables en mi trabajo
 	</Title>
 
-	<div class="relative center flex-col p-6">
+	<div class="relative w-full center flex-col p-6">
 		<VortexCanvas />
-		<div class="my-6 center flex-col gap-4">
-			<ul class="center gap-4">
+		<div
+			class="my-6 flex justify-center items-start md:items-center flex-wrap flex-row md:flex-col gap-4"
+		>
+			<ul class="center flex-col md:flex-row flex-wrap gap-4">
 				{SkillsFrontend.map((skill) => <SkillItem {...skill} />)}
 			</ul>
-			<ul class="center gap-4">
+			<ul class="center flex-col md:flex-row flex-wrap gap-4">
 				{SkillsBackend.map((skill) => <SkillItem {...skill} />)}
 			</ul>
-			<ul class="center gap-4">
+			<ul class="center flex-col md:flex-row flex-wrap gap-4">
 				{SkillsDatabases.map((skill) => <SkillItem {...skill} />)}
 			</ul>
-			<ul class="center gap-4">
+			<ul class="center flex-col md:flex-row flex-wrap gap-4">
 				{OtherTools.map((skill) => <SkillItem {...skill} />)}
 			</ul>
 		</div>
 	</div>
-</section>
+</SectionContainer>

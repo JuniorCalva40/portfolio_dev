@@ -3,15 +3,20 @@ import netmall from '../../assets/imgs/netmall2.webp'
 import rever from '../../assets/imgs/rever.png'
 import CardProyect from '../ui/CardProyect.astro'
 import Title from '../ui/Title.astro'
+import SectionContainer from './SectionContainer.astro'
 ---
 
-<section id="projects" class="my-12">
+<SectionContainer id="projects" margin class="my-24">
 	<Title variant="Title">Proyectos</Title>
 	<Title variant="description">Proyectos destacados: de la idea a la implementación</Title>
-	<div class="grid lg:grid-cols-4 lg:h-[60%] lg:grid-rows-2 gap-3 mt-8">
-		<CardProyect class="col-span-2 row-span-full place-content-center" img={rever} />
-
-		<CardProyect class="col-span-2" img={netmall} />
-		<CardProyect class="col-span-2" img={netmall} />
+	<div
+		class="grid grid-rows-3 md:grid-cols-4 md:h-[60%] h-[42rem] md:grid-rows-2 gap-10 md:gap-3 mt-8"
+	>
+		<CardProyect
+			class="md:col-span-2 row-span-1 md:row-span-full place-content-center"
+			img={rever}
+		/>
+		<CardProyect class="md:col-span-2 row-span-1" img={netmall} />
+		<CardProyect class="md:col-span-2" img={netmall} />
 	</div>
-</section>
+</SectionContainer>
