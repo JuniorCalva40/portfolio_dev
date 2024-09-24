@@ -1,0 +1,25 @@
+---
+type Variant = "Title" | "description";
+
+interface Props {
+  variant: Variant;
+}
+
+const { variant } = Astro.props;
+---
+
+{
+  variant === "Title" && (
+    <h3 class="text-white text-2xl font-bold text-center">
+      <slot />
+    </h3>
+  )
+}
+
+{
+  variant === "description" && (
+    <p class="text-muted text-sm text-center">
+      <slot />
+    </p>
+  )
+}

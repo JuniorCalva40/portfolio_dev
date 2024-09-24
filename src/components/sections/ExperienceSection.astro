@@ -1,0 +1,47 @@
+---
+import { Icon } from 'astro-icon/components'
+import Title from '../ui/Title.astro'
+
+const itemsExperience = [
+	{
+		company: 'Inkua',
+		logo: 'logos/inkua',
+		link: 'https://inkua.de/',
+		date: '2023 - 2024',
+		description:
+			'Formé parte del equipo creando soluciones digitales para ONGs, desarrollando plantillas web optimizadas que mejoraron la accesibilidad y eficiencia en iniciativas humanitarias.'
+	},
+	{
+		company: 'Werbung Company',
+		logo: 'logos/werbung',
+		link: 'https://www.werbungcompany.com/',
+		date: '2020 - 2022',
+		description:
+			'Colaboré estrechamente con diseñadores y desarrolladores para optimizar el sistema de diseño, asegurando una mayor eficiencia y coherencia en la creación de productos digitales.'
+	}
+]
+---
+
+<section class="my-16">
+	<Title variant="Title"> Experiencia</Title>
+	<Title variant="description" />
+
+	<div class="grid md:grid-cols-2 w-full mt-4 gap-4">
+		{
+			itemsExperience.map((item) => (
+				<article class="bg-gradient-to-b from-secondary to-violet-700/10 border-violet-500/50 px-3 py-2 rounded-lg border-t-2">
+					<div class="flex w-full justify-between items-start">
+						<div class="flex gap-3 items-center">
+							<Icon name={item.logo} size={50} />
+							<a href={item.link} target="_blank" rel="noopener" class="text-white">
+								{item.company}
+							</a>
+						</div>
+						<p class="text-muted mt-4">{item.date}</p>
+					</div>
+					<p class="text-muted text-sm mt-2">{item.description}</p>
+				</article>
+			))
+		}
+	</div>
+</section>

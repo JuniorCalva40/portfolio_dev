@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		/*Primary Colors*/
+		--pw-color-primary: #952bff;
+		--pw-color-secondary: #11011e;
+		--pw-color-accent: #1f1067;
+		--pw-secondary-gradient: #f042ff;
+
+		/*Fonts*/
+		--pw-text-heading: rgb(247, 248, 248);
+		--pw-text-default: rgb(229 236 246);
+		--pw-text-muted: rgb(229 236 246 / 66%);
+	}
+}
+
+@layer utilities {
+	.center {
+		@apply flex justify-center items-center;
+	}
+}

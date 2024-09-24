@@ -1,0 +1,140 @@
+---
+import Title from '../ui/Title.astro'
+import VortexCanvas from '../ui/VortexCanvas.astro'
+import SkillItem, { type Color } from './SkillItem.astro'
+
+const SkillsFrontend: { IconName?: string; color: Color; name: string }[] = [
+	{
+		color: 'muted',
+		name: 'Frontend:'
+	},
+	{
+		IconName: 'logos/react',
+		color: 'cyan',
+		name: 'React'
+	},
+	{
+		IconName: 'logos/tailwind',
+		color: 'cyan',
+		name: 'Tailwind'
+	},
+	{
+		IconName: 'logos/astro',
+		color: 'white',
+		name: 'Astro'
+	},
+	{
+		IconName: 'logos/html',
+		color: 'orange',
+		name: 'HTML'
+	},
+	{
+		IconName: 'logos/css',
+		color: 'blue',
+		name: 'CSS'
+	},
+	{
+		IconName: 'logos/javascript',
+		color: 'yellow',
+		name: 'Javascript'
+	}
+]
+
+const SkillsBackend: { IconName?: string; color: Color; name: string }[] = [
+	{
+		color: 'muted',
+		name: 'Backend:'
+	},
+	{
+		IconName: 'logos/node',
+		color: 'emerald',
+		name: 'Node'
+	},
+
+	{
+		IconName: 'logos/express',
+		color: 'white',
+		name: 'Express'
+	},
+	{
+		IconName: 'logos/prisma',
+		color: 'white',
+		name: 'Prisma'
+	},
+	{
+		IconName: 'logos/typescript',
+		color: 'blue',
+		name: 'Typescript'
+	}
+]
+
+const SkillsDatabases: { IconName?: string; color: Color; name: string }[] = [
+	{
+		color: 'muted',
+		name: 'Databases:'
+	},
+	{
+		IconName: 'logos/postgresql',
+		color: 'blue',
+		name: 'PostgreSQL'
+	},
+
+	{
+		IconName: 'logos/mongo',
+		color: 'emerald',
+		name: 'Mongo'
+	},
+	{
+		IconName: 'logos/mysql',
+		color: 'sky',
+		name: 'MySQL'
+	}
+]
+
+const OtherTools: { IconName?: string; color: Color; name: string }[] = [
+	{
+		color: 'muted',
+		name: 'Other Tools:'
+	},
+	{
+		IconName: 'logos/docker',
+		color: 'blue',
+		name: 'Docker'
+	},
+	{
+		IconName: 'logos/git',
+		color: 'orange',
+		name: 'Git'
+	},
+	{
+		IconName: 'logos/figma',
+		color: 'pink',
+		name: 'Figma'
+	}
+]
+---
+
+<section id="skills" class="my-16">
+	<Title variant="Title">Skills</Title>
+	<Title variant="description"
+		>Tecnologias que dan vida a mis ideas. Herramientas indispensables en mi trabajo
+	</Title>
+
+	<div class="relative center flex-col p-6">
+		<VortexCanvas />
+		<div class="my-6 center flex-col gap-4">
+			<ul class="center gap-4">
+				{SkillsFrontend.map((skill) => <SkillItem {...skill} />)}
+			</ul>
+			<ul class="center gap-4">
+				{SkillsBackend.map((skill) => <SkillItem {...skill} />)}
+			</ul>
+			<ul class="center gap-4">
+				{SkillsDatabases.map((skill) => <SkillItem {...skill} />)}
+			</ul>
+			<ul class="center gap-4">
+				{OtherTools.map((skill) => <SkillItem {...skill} />)}
+			</ul>
+		</div>
+	</div>
+</section>

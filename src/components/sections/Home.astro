@@ -1,0 +1,27 @@
+---
+import Image from 'astro/components/Image.astro'
+import avatar from '../../assets/imgs/avatar2.webp'
+import Button from '../ui/Button.astro'
+---
+
+<section id="home" class="my-12 lg:my-16 bg-transparent flex flex-col justify-center items-center">
+	<div
+		class="h-56 w-2/3 rotate-45 -z-10 opacity-40 blur-3xl absolute top-1/4 bg-gradient-to-br from-primary to-accent"
+	>
+	</div>
+	<span
+		class="text-xs inline-block text-muted py-2 px-3 border border-emerald-500/80 rounded-2xl animate-shimmer items-center justify-center bg-[linear-gradient(110deg,#1ddf2d03,45%,#10d49349,55%,#1ddf2d03)] bg-[length:200%_100%] transition-colors"
+		>Disponible para trabajar</span
+	>
+	<figure class="h-20 w-20 rounded-full my-4 overflow-hidden">
+		<Image class="w-full h-full object-center" src={avatar} alt="Avatar Profile" />
+	</figure>
+	<h1 class="text-4xl text-center font-bold text-white">
+		Hola, soy <span class="text-primary">Junior Calva</span>
+	</h1>
+	<h2 class="text-xl my-2 text-white text-center">Desarrollador de Software</h2>
+	<p class="text-muted text-center my-4 text-sm max-w-screen-sm">
+		Enfocado en crear soluciones digitales completas, diseñando aplicaciones funcionales y
+		visualmente atractivas
+	</p>
+</section>
