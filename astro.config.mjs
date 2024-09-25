@@ -8,7 +8,7 @@ import icon from 'astro-icon'
 export default defineConfig({
 	integrations: [tailwind(), icon()],
 	i18n: {
-		defaultLocale: 'en',
-		locales: ['es', 'en', 'pt-br']
+		defaultLocale: 'es',
+		locales: ['es', 'en',]
 	}
 })
