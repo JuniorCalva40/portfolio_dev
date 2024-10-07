@@ -1,0 +1,26 @@
+---
+import { languages } from '../../i18n/ui'
+import { getLangFromUrl, useTranslatedPath } from '../../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const translatePath = useTranslatedPath(lang)
+
+interface Props {
+	class?: string
+	id?: string
+}
+
+const { class: className, ...props } = Astro.props
+---
+
+<ul {...props} class={`${className} space-y-1 px-4`}>
+	{
+		Object.entries(languages).map(([lang, label]) => (
+			<li>
+				<a class="hover:underline hover:opacity-90" href={translatePath('/', lang)}>
+					{label}
+				</a>
+			</li>
+		))
+	}
+</ul>

@@ -2,11 +2,14 @@
 import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
 import Button from './Button.astro'
+import { getLangFromUrl, useTranslations } from '../../i18n/utils'
 
 interface Props {
 	img: ImageMetadata
 	class?: string
 }
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 
 const { class: className, img } = Astro.props
 ---
@@ -19,7 +22,7 @@ const { class: className, img } = Astro.props
 			alt={'hh'}
 		/>
 		<div>
-			<Button class="absolute right-12 -bottom-1" variant="gradient">Mas info...</Button>
+			<Button class="absolute right-12 -bottom-1" variant="gradient">{t('card.info')}</Button>
 
 			<button class="absolute -bottom-2 -right-1 z-10 rounded-full p-1 bg-secondary">
 				<div

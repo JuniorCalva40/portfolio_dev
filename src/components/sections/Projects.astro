@@ -1,14 +1,18 @@
 ---
 import netmall from '../../assets/imgs/netmall2.webp'
 import rever from '../../assets/imgs/rever.png'
+import { getLangFromUrl, useTranslations } from '../../i18n/utils'
 import CardProyect from '../ui/CardProyect.astro'
 import Title from '../ui/Title.astro'
 import SectionContainer from './SectionContainer.astro'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 ---
 
 <SectionContainer id="projects" margin class="my-24">
-	<Title variant="Title">Proyectos</Title>
-	<Title variant="description">Proyectos destacados: de la idea a la implementación</Title>
+	<Title variant="Title">{t('projects.title')}</Title>
+	<Title variant="description">{t('projects.subtitle')}</Title>
 	<div
 		class="grid grid-rows-3 md:grid-cols-4 md:h-[60%] h-[42rem] md:grid-rows-2 gap-10 md:gap-3 mt-8"
 	>

@@ -2,30 +2,36 @@
 import { Icon } from 'astro-icon/components'
 import Title from '../ui/Title.astro'
 import SectionContainer from './SectionContainer.astro'
+import { getLangFromUrl, useTranslations } from '../../i18n/utils'
 
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 const itemsExperience = [
 	{
 		company: 'Inkua',
 		logo: 'logos/inkua',
 		link: 'https://inkua.de/',
 		date: '2023 - 2024',
-		description:
-			'Formé parte del equipo creando soluciones digitales para ONGs, desarrollando plantillas web optimizadas que mejoraron la accesibilidad y eficiencia en iniciativas humanitarias.'
+		description: {
+			es: 'Formé parte del equipo creando soluciones digitales para ONGs, desarrollando plantillas web optimizadas que mejoraron la accesibilidad y eficiencia en iniciativas humanitarias.',
+			en: 'I was part of the team creating digital solutions for NGOs, developing optimized web templates that improved accessibility and efficiency in humanitarian initiatives.'
+		}
 	},
 	{
 		company: 'Werbung Company',
 		logo: 'logos/werbung',
 		link: 'https://www.werbungcompany.com/',
 		date: '2020 - 2022',
-		description:
-			'Colaboré estrechamente con diseñadores y desarrolladores para optimizar el sistema de diseño, asegurando una mayor eficiencia y coherencia en la creación de productos digitales.'
+		description: {
+			es: 'Colaboré estrechamente con diseñadores y desarrolladores para optimizar el sistema de diseño, asegurando una mayor eficiencia y coherencia en la creación de productos digitales.',
+			en: 'I worked closely with designers and developers to optimize the design system, ensuring greater efficiency and consistency in the creation of digital products.'
+		}
 	}
 ]
 ---
 
 <SectionContainer margin class="my-16">
-	<Title variant="Title"> Experiencia</Title>
-	<Title variant="description" />
+	<Title variant="Title">{t('experience.title')}</Title>
 
 	<div class="grid md:grid-cols-2 w-full mt-8 gap-4">
 		{
@@ -40,7 +46,7 @@ const itemsExperience = [
 						</div>
 						<p class="text-muted mt-4">{item.date}</p>
 					</div>
-					<p class="text-muted text-sm mt-2">{item.description}</p>
+					<p class="text-muted text-sm mt-2">{item.description[lang]}</p>
 				</article>
 			))
 		}

@@ -1,5 +1,9 @@
 ---
 import { Icon } from 'astro-icon/components'
+import { getLangFromUrl, useTranslations } from '../../i18n/utils'
+import LanguagePicker from '../ui/LanguagePicker.astro'
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 ---
 
 <nav
@@ -10,12 +14,33 @@ import { Icon } from 'astro-icon/components'
 	</figure>
 
 	<div class="flex justify-between mx-4 items-center gap-8">
-		<a href="#projects">Proyectos</a>
+		<a href="#projects">{t('nav.projects')}</a>
 		<a href="#skills">Skills</a>
 		<a href="">Blog</a>
 	</div>
 
-	<div class="cursor-pointer mx-4">
+	<div id="button-translate" class="cursor-pointer mx-4 relative">
 		<Icon name="ui/language" size={25} />
+		<LanguagePicker
+			id="language-picker"
+			class="absolute hidden top-8 right-0 border bg-secondary border-white/35 py-2 rounded-lg"
+		/>
 	</div>
 </nav>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const iconTranslate = document.getElementById('button-translate')
+		const languagePicker = document.getElementById('language-picker')
+
+		if (iconTranslate && languagePicker) {
+			iconTranslate.addEventListener('click', () => {
+				languagePicker.classList.toggle('hidden')
+			})
+
+			window.addEventListener('scroll', () => {
+				languagePicker.classList.add('hidden')
+			})
+		}
+	})
+</script>

@@ -1,16 +1,19 @@
 ---
-import ExperienceSection from '../../components/sections/ExperienceSection.astro'
+import Experience from '../../components/sections/Experience.astro'
 import Home from '../../components/sections/Home.astro'
-import ProjectsSection from '../../components/sections/ProjectsSection.astro'
+import Projects from '../../components/sections/Projects.astro'
 import SkillsSection from '../../components/sections/SkillsSection.astro'
 import Layout from '../../layouts/Layout.astro'
+
+const { currentLocale } = Astro
+console.log(currentLocale)
 ---
 
 <Layout title="Welcome to Astro.">
 	<main class="mx-auto">
 		<Home />
-		<ExperienceSection />
-		<ProjectsSection />
+		<Experience />
+		<Projects />
 		<SkillsSection />
 		<!-- <BlogSection /> -->
 	</main>
