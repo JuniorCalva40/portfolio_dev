@@ -1,14 +1,15 @@
 ---
 import { Icon } from 'astro-icon/components'
 import Title from '../ui/Title.astro'
+import { getLangFromUrl, useTranslations } from '../../i18n/utils'
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 ---
 
 <footer class="my-16 max-w-4xl md:mx-auto mx-5">
-	<Title variant="Title">Contacto</Title>
-	<p class="text-muted text-sm mt-6 max-w-xl">
-		Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam nulla debitis veritatis hic? Aut
-		neque, delectus, vel tenetur doloremque possimus illo eligendi nam error numquam aspernatur
-		quidem quod, minima natus.
+	<Title variant="Title">{t('footer.title')}</Title>
+	<p class="text-muted text-sm mt-6 max-w-2xl">
+		{t('footer.subtitle')}
 	</p>
 
 	<div class="my-4 flex justify-start gap-4 items-center">

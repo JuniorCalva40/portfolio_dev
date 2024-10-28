@@ -17,11 +17,14 @@ export const ui = {
 		'home.description':
 			'Enfocado en crear soluciones digitales completas, diseñando aplicaciones funcionales y visualmente atractivas',
 		'experience.title': 'Experiencia',
-		'projects.title': 'Projects',
+		'projects.title': 'Proyectos',
 		'projects.subtitle': 'Proyectos destacados: de la idea a la implementación',
 		'card.info': 'Más info...',
 		'skills.subtitle':
-			'Tecnologías que dan vida a mis ideas. Herramientas indispensables en mi trabajo.'
+			'Tecnologías que dan vida a mis ideas. Herramientas indispensables en mi trabajo.',
+		'footer.title': 'Contacto',
+		'footer.subtitle':
+			'Estoy abierto a contribuir y buscar nuevas oportunidades que me permitan aplicar y expandir mis habilidades en desarrollo de software. Me emociona colaborar en proyectos innovadores que generen un impacto positivo. Conéctate conmigo a través de mis redes sociales y correo electrónico para explorar cómo puedo ser parte de tu equipo.'
 	},
 	en: {
 		'nav.projects': 'Projects',
@@ -36,7 +39,10 @@ export const ui = {
 		'projects.title': 'Projects',
 		'projects.subtitle': 'Featured Projects: From Idea to Implementation',
 		'card.info': 'More info...',
-		'skills.subtitle': 'Technologies that bring my ideas to life. Essential tools in my work.'
+		'skills.subtitle': 'Technologies that bring my ideas to life. Essential tools in my work.',
+		'footer.title': 'Contact',
+		'footer.subtitle':
+			"I'm open to contributing and exploring new opportunities to apply and expand my skills in software development. I'm excited about collaborating on innovative projects that make a positive impact. Connect with me through my social media and email to discuss how I can contribute to your team."
 	}
 } as const
 
