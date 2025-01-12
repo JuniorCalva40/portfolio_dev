@@ -4,11 +4,13 @@ import tailwind from '@astrojs/tailwind'
 
 import icon from 'astro-icon'
 
+import mdx from '@astrojs/mdx';
+
 // https://astro.build/config
 export default defineConfig({
-	integrations: [tailwind(), icon()],
-	i18n: {
-		defaultLocale: 'es',
-		locales: ['es', 'en']
-	}
+    integrations: [tailwind(), icon(), mdx()],
+    i18n: {
+        defaultLocale: 'es',
+        locales: ['es', 'en']
+    }
 })

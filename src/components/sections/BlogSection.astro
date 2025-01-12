@@ -2,15 +2,16 @@
 import CardBlog from '../ui/CardBlog.astro'
 import Title from '../ui/Title.astro'
 import SectionContainer from './SectionContainer.astro'
+import { getCollection } from 'astro:content'
+
+const posts = await getCollection('posts')
 ---
 
 <div class="bg-gradient-to-b from-secondary via-violet-950/50 to-secondary py-1">
 	<SectionContainer margin>
 		<Title variant="Title">Blog</Title>
 		<div class="flex mt-4 justify-between items-center">
-			<CardBlog />
-			<CardBlog />
-			<CardBlog />
+			{posts.map((post) => <CardBlog {...post.data} slug={post.slug} />)}
 		</div>
 	</SectionContainer>
 </div>

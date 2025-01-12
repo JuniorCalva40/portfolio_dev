@@ -1,0 +1,36 @@
+---
+title: 'Entendiendo los Hooks en React'
+img: 'https://example.com/images/react-hooks.png'
+description: 'Aprende cómo los hooks simplifican la gestión del estado y los efectos en tus componentes de React.'
+date: '2025-01-12'
+category: 'React'
+slug: 'entendiendo-hooks-react'
+---
+
+Los Hooks son una característica introducida en React 16.8 que permite usar el estado y otras características de React sin escribir una clase. Los más comunes son `useState` y `useEffect`.
+
+## ¿Qué son los Hooks?
+
+Los Hooks te permiten:
+
+- Usar el estado en componentes funcionales.
+- Ejecutar efectos secundarios como llamadas a APIs o suscripciones.
+
+### Ejemplo: useState
+
+```jsx
+import React, { useState } from 'react'
+
+function Contador() {
+	const [contador, setContador] = useState(0)
+
+	return (
+		<div>
+			<p>Has hecho clic {contador} veces.</p>
+			<button onClick={() => setContador(contador + 1)}>Incrementar</button>
+		</div>
+	)
+}
+
+export default Contador
+```

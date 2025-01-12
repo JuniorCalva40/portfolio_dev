@@ -17,6 +17,11 @@
 	}
 }
 
+html {
+	scroll-padding-top: 100px;
+	scroll-behavior: smooth;
+}
+
 @layer utilities {
 	.center {
 		@apply flex justify-center items-center;

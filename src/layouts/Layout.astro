@@ -2,9 +2,10 @@
 // Supports weights 100-900
 import '@fontsource-variable/inter'
 import '../styles/global.css'
-import Navbar from '../components/sections/Navbar.astro'
+import TopNavigation from '../components/sections/TopNavigation.astro'
 import Footer from '../components/sections/Footer.astro'
 import { getLangFromUrl } from '../i18n/utils'
+import { ClientRouter, fade } from 'astro:transitions'
 
 interface Props {
 	title: string
@@ -17,21 +18,20 @@ const { title, description } = Astro.props
 <!doctype html>
 <html lang={lang} class="scroll-smooth">
 	<head>
+		<ClientRouter />
 		<meta charset="UTF-8" />
-		<meta name="description" content={description ?? 'Description'} />
+		<meta name="description" content={description ?? 'Junior Calva Portfolio'} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body class="bg-secondary">
-		<Navbar />
+		<TopNavigation />
 		<slot />
 		<Footer />
 	</body>
 </html>
-
-<script></script>
 
 <style>
 	body {
