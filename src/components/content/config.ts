@@ -7,8 +7,7 @@ const posts = defineCollection({
 		description: z.string(),
 		date: z.string(),
 		category: z.string(),
-		content: z.string(),
-		slug: z.string()
+		content: z.string()
 	})
 })
 
