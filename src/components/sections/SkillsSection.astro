@@ -14,6 +14,11 @@ const SkillsFrontend: { IconName?: string; color: Color; name: string }[] = [
 		name: 'Frontend:'
 	},
 	{
+		IconName: 'logos/nextjs',
+		color: 'white',
+		name: 'Next.js'
+	},
+	{
 		IconName: 'logos/react',
 		color: 'cyan',
 		name: 'React'
@@ -70,6 +75,16 @@ const SkillsBackend: { IconName?: string; color: Color; name: string }[] = [
 		IconName: 'logos/typescript',
 		color: 'blue',
 		name: 'Typescript'
+	},
+	{
+		IconName: 'logos/python',
+		color: 'blue',
+		name: 'Python'
+	},
+	{
+		IconName: 'logos/fastapi',
+		color: 'emerald',
+		name: 'FastAPI'
 	}
 ]
 
@@ -123,7 +138,7 @@ const OtherTools: { IconName?: string; color: Color; name: string }[] = [
 	<Title variant="Title">Skills</Title>
 	<Title variant="description">{t('skills.subtitle')} </Title>
 
-	<div class="relative w-full center flex-col p-6">
+	<div class="relative w-full h-auto center flex-col p-6">
 		<VortexCanvas />
 		<div
 			class="my-6 flex justify-center items-start md:items-center flex-wrap flex-row md:flex-col gap-4"

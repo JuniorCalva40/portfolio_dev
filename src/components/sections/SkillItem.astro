@@ -30,7 +30,7 @@ const colorVariants: Record<Color, string> = {
 <li
 	class={`${colorVariants[color]} cursor-pointer hover:shadow-lg transition-colors ease-in-out duration-100 center bg-white/5 backdrop-blur-2xl px-3 py-1 border-[1px] rounded-lg gap-2`}
 >
-	{IconName && <Icon name={IconName} size={20} />}
+	{IconName && <Icon class={'text-black'} name={IconName} size={20} />}
 
 	<p class="font-medium text-sm select-none">{name}</p>
 </li>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import { Image } from 'astro:assets'
 
 import { getCollection, render } from 'astro:content'
 import SectionContainer from '../../components/sections/SectionContainer.astro'
@@ -14,6 +15,8 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props
+const { data } = post
+const { title, img } = data
 const { Content } = await render(post)
 ---
 
@@ -21,7 +24,8 @@ const { Content } = await render(post)
 	<main class="bg-gradient-to-b from-secondary via-violet-950/50 to-secondary py-1">
 		<SectionContainer margin>
 			<h1 class="text-3xl font-bold text-white">{post.data.title}</h1>
-			<div class="mt-4">
+			<Image class={'w-72'} src={img} alt={title} width={800} height={600} />
+			<div class="mt-4 prose prose-stone prose-invert">
 				<Content />
 			</div>
 		</SectionContainer>
