@@ -21,22 +21,19 @@ interface Project {
 const projects: Project[] = [
 	{
 		title: 'Rever AI',
-		description:
-			'Plataforma de generación de imágenes basada en IA utilizando modelos de Stable Diffusion. Implementada con una arquitectura moderna que combina Next.js para el frontend y FastAPI para el backend, ofreciendo una experiencia fluida en la generación y gestión de imágenes.',
+		description: t('projects.items.rever.description'),
 		techStack: ['Next.js', 'FastAPI', 'Tailwind'],
 		img: rever
 	},
 	{
 		title: 'Netmall Marketplace',
-		description:
-			'Plataforma de comercio electrónico B2B que facilita la conexión entre proveedores y compradores. Desarrollada con Next.js y FastAPI, incorpora características avanzadas como gestión de inventario, sistema de pedidos y panel de administración personalizado.',
+		description: t('projects.items.netmall.description'),
 		techStack: ['Next.js', 'FastAPI', 'Tailwind'],
 		img: netmall
 	},
 	{
-		title: 'Portfolio Personal',
-		description:
-			'Sitio web personal desarrollado con Astro y TailwindCSS, optimizado para rendimiento y SEO. Implementa internacionalización, animaciones fluidas y una interfaz adaptativa para mostrar proyectos y habilidades técnicas.',
+		title: t('projects.items.portfolio.title'),
+		description: t('projects.items.portfolio.description'),
 		techStack: ['Astro', 'Tailwind', 'Typescript', 'React'],
 		img: netmall // Deberías reemplazar esta imagen con la de tu portfolio
 	}

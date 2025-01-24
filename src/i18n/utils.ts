@@ -6,10 +6,22 @@ export function getLangFromUrl(url: URL) {
 	return defaultLang
 }
 
+type NestedKeys<T> = T extends object
+	? {
+			[K in keyof T]: `${K & string}${T[K] extends object ? `.${NestedKeys<T[K]>}` : ''}`
+		}[keyof T]
+	: never
+
+type UIKeys = NestedKeys<(typeof ui)['es']>
+
 export function useTranslations(lang: keyof typeof ui) {
-	return function t(key: keyof (typeof ui)[typeof defaultLang]) {
-		return ui[lang][key] || ui[defaultLang][key]
+	return function t(key: UIKeys): string {
+		return getNestedValue(ui[lang], key)
 	}
+}
+
+function getNestedValue(obj: any, path: string): string {
+	return path.split('.').reduce((acc, part) => acc[part], obj)
 }
 
 export function useTranslatedPath(lang: keyof typeof ui) {
