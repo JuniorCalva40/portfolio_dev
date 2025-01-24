@@ -22,7 +22,7 @@ const { class: className, img, title, description, techStack } = Astro.props
 <article class:list={['project-card rounded-md relative  ', className]}>
 	<figure class="imageContainer">
 		<Image
-			class={'rounded-md h-full w-full object-cover object-top   sm:object-center '}
+			class={'rounded-md h-full w-full object-cover object-top sm:object-center'}
 			src={img}
 			alt={title}
 		/>
@@ -79,10 +79,12 @@ const { class: className, img, title, description, techStack } = Astro.props
 
 				button.addEventListener('click', () => {
 					dialog.showModal()
+					document.body.style.overflow = 'hidden'
 				})
 
 				closeButton.addEventListener('click', () => {
 					dialog.close()
+					document.body.style.overflow = 'auto'
 				})
 
 				dialog.addEventListener('click', (e) => {
@@ -94,6 +96,7 @@ const { class: className, img, title, description, techStack } = Astro.props
 						e.clientY > dialogDimensions.bottom
 					) {
 						dialog.close()
+						document.body.style.overflow = 'auto'
 					}
 				})
 			})
@@ -129,8 +132,8 @@ const { class: className, img, title, description, techStack } = Astro.props
 			background: linear-gradient(
 				0deg,
 				rgb(2, 0, 36) 0%,
-				rgba(0, 0, 0, 0.422) 30%,
-				rgba(255, 255, 255, 0) 100%
+				rgba(0, 0, 0, 0.452) 30%,
+				rgba(255, 255, 255, 0.027) 100%
 			);
 			pointer-events: none;
 		}
@@ -139,15 +142,39 @@ const { class: className, img, title, description, techStack } = Astro.props
 			background: linear-gradient(to bottom right, rgba(124, 58, 237, 0.05), rgba(0, 0, 0, 0.2));
 			border: 1px solid rgba(255, 255, 255, 0.1);
 			color: white;
-			backdrop-filter: blur(15px);
+			backdrop-filter: blur(18px);
 		}
 
 		dialog::backdrop {
-			background: rgba(0, 0, 0, 0.5);
+			background: rgba(0, 0, 0, 0.514);
+		}
+
+		dialog[open] {
+			animation: show 0.3s ease normal;
 		}
 
 		dialog::backdrop {
-			backdrop-filter: blur(1px);
+			animation: backdrop 0.3s ease normal;
+		}
+
+		@keyframes show {
+			from {
+				opacity: 0;
+				transform: translate(-50%, -48%) scale(0.96);
+			}
+			to {
+				opacity: 1;
+				transform: translate(-50%, -50%) scale(1);
+			}
+		}
+
+		@keyframes backdrop {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
 		}
 	</style>
 </article>
