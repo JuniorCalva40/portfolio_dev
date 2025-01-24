@@ -34,8 +34,15 @@ const t = useTranslations(lang)
 		const languagePicker = document.getElementById('language-picker')
 
 		if (iconTranslate && languagePicker) {
-			iconTranslate.addEventListener('click', () => {
+			iconTranslate.addEventListener('click', (e) => {
+				e.stopPropagation()
 				languagePicker.classList.toggle('hidden')
+			})
+
+			document.addEventListener('click', (e) => {
+				if (!iconTranslate.contains(e.target)) {
+					languagePicker.classList.add('hidden')
+				}
 			})
 
 			window.addEventListener('scroll', () => {

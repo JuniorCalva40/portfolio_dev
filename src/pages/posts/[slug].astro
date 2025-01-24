@@ -24,8 +24,8 @@ const { Content } = await render(post)
 	<main class="bg-gradient-to-b from-secondary via-violet-950/50 to-secondary py-1">
 		<SectionContainer margin>
 			<h1 class="text-3xl font-bold text-white">{post.data.title}</h1>
-			<Image class={'w-72'} src={img} alt={title} width={800} height={600} />
-			<div class="mt-4 prose prose-stone prose-invert">
+			<Image transition:name="fade" class={'w-72'} src={img} alt={title} width={800} height={600} />
+			<div class="mt-4 prose prose-code: prose-invert">
 				<Content />
 			</div>
 		</SectionContainer>

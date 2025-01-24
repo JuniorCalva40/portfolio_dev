@@ -7,7 +7,8 @@ export default {
 	theme: {
 		extend: {
 			animation: {
-				shimmer: 'shimmer 2s linear infinite'
+				shimmer: 'shimmer 2s linear infinite',
+				fade: 'fade 0.5s ease-in-out'
 			},
 			keyframes: {
 				shimmer: {
@@ -16,6 +17,14 @@ export default {
 					},
 					to: {
 						backgroundPosition: '-200% 0'
+					}
+				},
+				fade: {
+					from: {
+						opacity: '0'
+					},
+					to: {
+						opacity: '1'
 					}
 				}
 			},

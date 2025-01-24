@@ -2,136 +2,37 @@
 import Title from '../ui/Title.astro'
 import VortexCanvas from '../ui/VortexCanvas.astro'
 import SectionContainer from './SectionContainer.astro'
-import SkillItem, { type Color } from './SkillItem.astro'
+import TechBadge from './TechBadge.astro'
 import { getLangFromUrl, useTranslations } from '../../i18n/utils'
+import type { SkillName } from '../../types/project'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
-const SkillsFrontend: { IconName?: string; color: Color; name: string }[] = [
-	{
-		color: 'muted',
-		name: 'Frontend:'
-	},
-	{
-		IconName: 'logos/nextjs',
-		color: 'white',
-		name: 'Next.js'
-	},
-	{
-		IconName: 'logos/react',
-		color: 'cyan',
-		name: 'React'
-	},
-	{
-		IconName: 'logos/tailwind',
-		color: 'cyan',
-		name: 'Tailwind'
-	},
-	{
-		IconName: 'logos/astro',
-		color: 'white',
-		name: 'Astro'
-	},
-	{
-		IconName: 'logos/html',
-		color: 'orange',
-		name: 'HTML'
-	},
-	{
-		IconName: 'logos/css',
-		color: 'blue',
-		name: 'CSS'
-	},
-	{
-		IconName: 'logos/javascript',
-		color: 'yellow',
-		name: 'Javascript'
-	}
-]
+const SkillsFrontend: SkillName[] = [
+	'Frontend:',
+	'Next.js',
+	'React',
+	'Tailwind',
+	'Astro',
+	'HTML',
+	'CSS',
+	'Javascript'
+] as const
 
-const SkillsBackend: { IconName?: string; color: Color; name: string }[] = [
-	{
-		color: 'muted',
-		name: 'Backend:'
-	},
-	{
-		IconName: 'logos/node',
-		color: 'emerald',
-		name: 'Node'
-	},
+const SkillsBackend: SkillName[] = [
+	'Backend:',
+	'Node',
+	'Express',
+	'Prisma',
+	'Typescript',
+	'Python',
+	'FastAPI'
+] as const
 
-	{
-		IconName: 'logos/express',
-		color: 'white',
-		name: 'Express'
-	},
-	{
-		IconName: 'logos/prisma',
-		color: 'white',
-		name: 'Prisma'
-	},
-	{
-		IconName: 'logos/typescript',
-		color: 'blue',
-		name: 'Typescript'
-	},
-	{
-		IconName: 'logos/python',
-		color: 'blue',
-		name: 'Python'
-	},
-	{
-		IconName: 'logos/fastapi',
-		color: 'emerald',
-		name: 'FastAPI'
-	}
-]
+const SkillsDatabases: SkillName[] = ['Databases:', 'PostgreSQL', 'Mongo', 'MySQL'] as const
 
-const SkillsDatabases: { IconName?: string; color: Color; name: string }[] = [
-	{
-		color: 'muted',
-		name: 'Databases:'
-	},
-	{
-		IconName: 'logos/postgresql',
-		color: 'blue',
-		name: 'PostgreSQL'
-	},
-
-	{
-		IconName: 'logos/mongo',
-		color: 'emerald',
-		name: 'Mongo'
-	},
-	{
-		IconName: 'logos/mysql',
-		color: 'sky',
-		name: 'MySQL'
-	}
-]
-
-const OtherTools: { IconName?: string; color: Color; name: string }[] = [
-	{
-		color: 'muted',
-		name: 'Other Tools:'
-	},
-	{
-		IconName: 'logos/docker',
-		color: 'blue',
-		name: 'Docker'
-	},
-	{
-		IconName: 'logos/git',
-		color: 'orange',
-		name: 'Git'
-	},
-	{
-		IconName: 'logos/figma',
-		color: 'pink',
-		name: 'Figma'
-	}
-]
+const OtherTools: SkillName[] = ['Other Tools:', 'Docker', 'Git', 'Figma'] as const
 ---
 
 <SectionContainer id="skills" margin={false} class="my-24">
@@ -144,16 +45,16 @@ const OtherTools: { IconName?: string; color: Color; name: string }[] = [
 			class="my-6 flex justify-center items-start md:items-center flex-wrap flex-row md:flex-col gap-4"
 		>
 			<ul class="center flex-col md:flex-row flex-wrap gap-4">
-				{SkillsFrontend.map((skill) => <SkillItem {...skill} />)}
+				{SkillsFrontend.map((name) => <TechBadge {name} />)}
 			</ul>
 			<ul class="center flex-col md:flex-row flex-wrap gap-4">
-				{SkillsBackend.map((skill) => <SkillItem {...skill} />)}
+				{SkillsBackend.map((name) => <TechBadge {name} />)}
 			</ul>
 			<ul class="center flex-col md:flex-row flex-wrap gap-4">
-				{SkillsDatabases.map((skill) => <SkillItem {...skill} />)}
+				{SkillsDatabases.map((name) => <TechBadge {name} />)}
 			</ul>
 			<ul class="center flex-col md:flex-row flex-wrap gap-4">
-				{OtherTools.map((skill) => <SkillItem {...skill} />)}
+				{OtherTools.map((name) => <TechBadge {name} />)}
 			</ul>
 		</div>
 	</div>
