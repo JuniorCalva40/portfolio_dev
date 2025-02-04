@@ -40,17 +40,21 @@ export const ui = {
 			title: 'Proyectos',
 			subtitle: 'Proyectos destacados: de la idea a la implementación',
 			card: {
+				source: 'Código fuente',
 				info: 'Más información'
 			},
 			items: {
 				rever: {
+					title: 'Rever AI',
 					description:
 						'Plataforma de generación de imágenes basada en IA utilizando modelos de Stable Diffusion. Implementada con una arquitectura moderna que combina Next.js para el frontend y FastAPI para el backend, ofreciendo una experiencia fluida en la generación y gestión de imágenes.'
 				},
-				netmall: {
+				mapa_crime_ec: {
+					title: 'Mapa de Crimen Ecuador',
 					description:
-						'Plataforma de comercio electrónico B2B que facilita la conexión entre proveedores y compradores. Desarrollada con Next.js y FastAPI, incorpora características avanzadas como gestión de inventario, sistema de pedidos y panel de administración personalizado.'
+						'Esta web proporciona un mapa de calor de crimen en Ecuador, permitiendo a los usuarios ver y analizar datos de crimen. Ayuda a los usuarios a estar informados y tomar medidas de seguridad apropiadas. La arquitectura de frontend con React + Mantine UI y backend con FastAPI + Pandas para analizar los datos la fuente proviene de datos abiertos Ecuador.'
 				},
+
 				portfolio: {
 					title: 'Portfolio Personal',
 					description:
@@ -99,17 +103,22 @@ export const ui = {
 			title: 'Projects',
 			subtitle: 'Featured Projects: From Idea to Implementation',
 			card: {
-				info: 'More info'
+				info: 'More info',
+				source: 'Source Code'
 			},
+
 			items: {
 				rever: {
+					title: 'Rever AI',
 					description:
 						'AI image generation platform using Stable Diffusion models. Implemented with a modern architecture combining Next.js for frontend and FastAPI for backend, offering a smooth experience in image generation and management.'
 				},
-				netmall: {
+				mapa_crime_ec: {
+					title: 'Ecuador Crime Map Heat',
 					description:
-						'B2B e-commerce platform that facilitates connection between suppliers and buyers. Developed with Next.js and FastAPI, incorporating advanced features such as inventory management, order system, and custom admin panel.'
+						'This web provides a heat map of crime in Ecuador, allowing users to view and analyze crime data. It helps users stay informed and take appropriate safety measures. The frontend architecture is React + Mantine UI and the backend is FastAPI + Pandas to analyze the data, the source of the data is from open data Ecuador.'
 				},
+
 				portfolio: {
 					title: 'Personal Portfolio',
 					description:

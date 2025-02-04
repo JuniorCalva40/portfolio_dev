@@ -12,11 +12,13 @@ interface Props {
 	description: string
 	techStack: SkillName[]
 	class?: string
+	link: string
+	link_source?: string
 }
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
-const { class: className, img, title, description, techStack } = Astro.props
+const { class: className, img, title, description, techStack, link, link_source } = Astro.props
 ---
 
 <article class:list={['project-card rounded-md relative  ', className]}>
@@ -49,20 +51,33 @@ const { class: className, img, title, description, techStack } = Astro.props
 	>
 		<div class="grid grid-cols-12 h-full gap-4">
 			<Icon name={'ui/x-circle'} size={25} class="absolute top-2 right-2 cursor-pointer" />
-			<div class="flex flex-col gap-2 col-span-4">
+			<div class="hidden md:flex flex-col gap-2 col-span-4">
 				<Image src={img} alt={title} class="w-72 h-72 rounded-md object-cover object-top" />
 			</div>
-			<div class="flex flex-col gap-2 col-span-8">
+			<div class="flex flex-col gap-2 col-span-12 md:col-span-8">
 				<h2 class="text-white text-2xl font-bold">{title}</h2>
+				<Image src={img} alt={title} class="w-full md:hidden rounded-md object-cover object-top" />
 				<p class="text-muted text-sm">{description}</p>
 				<ul class="flex flex-wrap gap-2 my-2">
 					{techStack.map((tech) => <TechBadge name={tech} />)}
 				</ul>
-				<div class="flex gap-2">
+				<div class="flex gap-2 my-2">
 					<Button variant="gradient">
-						<Icon name={'ui/arrow-up-right'} class="inline" size={20} color={'white'} />
-						<span class="text-white ml-2">Preview</span>
+						<a href={link} target="_blank" rel="noopener noreferrer" class="flex items-center">
+							<Icon name={'ui/arrow-up-right'} class="inline" size={20} color={'white'} />
+							<span class="text-white ml-2">Preview</span>
+						</a>
 					</Button>
+					{
+						link_source && (
+							<Button variant="solid">
+								<a href={link} target="_blank" rel="noopener noreferrer" class="flex items-center">
+									<Icon name={'logos/github'} class="inline" size={20} color={'white'} />
+									<span class="text-white ml-2">{t('projects.card.source')}</span>
+								</a>
+							</Button>
+						)
+					}
 				</div>
 			</div>
 		</div>

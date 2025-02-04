@@ -2,10 +2,13 @@
 import { type ImageMetadata } from 'astro'
 import netmall from '../../assets/imgs/netmall2.webp'
 import rever from '../../assets/imgs/rever.webp'
+import map_crime from '../../assets/imgs/map_crime_ec.webp'
 import { getLangFromUrl, useTranslations } from '../../i18n/utils'
 import CardProject from '../ui/CardProject.astro'
 import Title from '../ui/Title.astro'
+
 import SectionContainer from './SectionContainer.astro'
+
 import type { SkillName } from '../../types/project'
 
 const lang = getLangFromUrl(Astro.url)
@@ -16,26 +19,33 @@ interface Project {
 	description: string
 	techStack: SkillName[]
 	img: ImageMetadata
+	link: string
+	link_source?: string
 }
 
 const projects: Project[] = [
 	{
 		title: 'Rever AI',
 		description: t('projects.items.rever.description'),
-		techStack: ['Next.js', 'FastAPI', 'Tailwind'],
-		img: rever
+		techStack: ['React', 'FastAPI', 'Tailwind'],
+		img: rever,
+		link: 'https://rever.ai'
 	},
 	{
-		title: 'Netmall Marketplace',
-		description: t('projects.items.netmall.description'),
-		techStack: ['Next.js', 'FastAPI', 'Tailwind'],
-		img: netmall
+		title: t('projects.items.mapa_crime_ec.title'),
+		description: t('projects.items.mapa_crime_ec.description'),
+		techStack: ['React', 'Typescript', 'Tailwind', 'Python', 'FastAPI'],
+		img: map_crime,
+		link: 'https://www.mapacrimenecuador.info',
+		link_source: 'https://github.com/JuniorCalva40/crime_map_ecuador'
 	},
+
 	{
 		title: t('projects.items.portfolio.title'),
 		description: t('projects.items.portfolio.description'),
 		techStack: ['Astro', 'Tailwind', 'Typescript', 'React'],
-		img: netmall // Deberías reemplazar esta imagen con la de tu portfolio
+		img: netmall,
+		link: 'https://juniorcalva.com'
 	}
 ] as const
 
@@ -60,6 +70,8 @@ const gridClasses = [
 					title={project.title}
 					description={project.description}
 					techStack={project.techStack}
+					link={project.link}
+					link_source={project.link_source}
 				/>
 			))
 		}
