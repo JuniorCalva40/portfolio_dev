@@ -127,5 +127,7 @@
 		animate()
 	}
 
-	document.addEventListener('DOMContentLoaded', initParticles)
+	document.addEventListener('astro:page-load', (e) => {
+		initParticles()
+	})
 </script>
