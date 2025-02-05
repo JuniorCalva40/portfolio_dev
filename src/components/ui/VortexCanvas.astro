@@ -8,6 +8,7 @@
 			'absolute h-full w-full inset-0 z-0 bg-transparent flex items-center justify-center'
 		]}
 	>
+		<div class="absolute w-[250px] h-[250px] rounded-full gradient-background blur-2xl"></div>
 		<canvas class="w-full h-full" data-vortex></canvas>
 	</div>
 	<div class="relative z-10">
@@ -139,10 +140,26 @@
 
 			const x = this.particleProps[i]
 			const y = this.particleProps[i + 1]
-			const n = this.noise3D(x * xOff, y * yOff, this.tick * zOff) * noiseSteps * this.TAU
 
-			const vx = this.lerp(this.particleProps[i + 2], Math.cos(n), 0.5)
-			const vy = this.lerp(this.particleProps[i + 3], Math.sin(n), 0.5)
+			const dx = x - this.center[0]
+			const dy = y - this.center[1]
+			const distanceToCenter = Math.sqrt(dx * dx + dy * dy)
+
+			const attractionRadius = 200
+			const attractionStrength = 0.08
+
+			let vx, vy
+
+			if (distanceToCenter < attractionRadius) {
+				const force =
+					((attractionRadius - distanceToCenter) / attractionRadius) * attractionStrength
+				vx = this.lerp(this.particleProps[i + 2], -dx / distanceToCenter, force)
+				vy = this.lerp(this.particleProps[i + 3], -dy / distanceToCenter, force)
+			} else {
+				const n = this.noise3D(x * xOff, y * yOff, this.tick * zOff) * noiseSteps * this.TAU
+				vx = this.lerp(this.particleProps[i + 2], Math.cos(n), 0.5)
+				vy = this.lerp(this.particleProps[i + 3], Math.sin(n), 0.5)
+			}
 
 			const life = this.particleProps[i + 4]
 			const ttl = this.particleProps[i + 5]
@@ -265,7 +282,7 @@
 		vortexInstances.push(instance)
 	})
 
-	// Cleanup my beautiful Effect
+	// Cleanup my Beautiful Effect
 	document.addEventListener('astro:before-swap', () => {
 		vortexInstances.forEach((instance) => instance.destroy())
 	})

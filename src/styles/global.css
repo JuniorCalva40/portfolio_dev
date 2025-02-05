@@ -27,3 +27,7 @@ html {
 		@apply flex justify-center items-center;
 	}
 }
+
+.gradient-background {
+	background: radial-gradient(circle, #461ddce3, #5e26ce5d, #89898915);
+}
