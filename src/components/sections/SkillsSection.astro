@@ -10,7 +10,6 @@ const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
 const SkillsFrontend: SkillName[] = [
-	'Frontend:',
 	'Next.js',
 	'React',
 	'Tailwind',
@@ -21,7 +20,6 @@ const SkillsFrontend: SkillName[] = [
 ] as const
 
 const SkillsBackend: SkillName[] = [
-	'Backend:',
 	'Node',
 	'Express',
 	'Prisma',
@@ -30,32 +28,45 @@ const SkillsBackend: SkillName[] = [
 	'FastAPI'
 ] as const
 
-const SkillsDatabases: SkillName[] = ['Databases:', 'PostgreSQL', 'Mongo', 'MySQL'] as const
+const SkillsDatabases: SkillName[] = ['PostgreSQL', 'Mongo', 'MySQL'] as const
 
-const OtherTools: SkillName[] = ['Other Tools:', 'Docker', 'Git', 'Figma'] as const
+const OtherTools: SkillName[] = ['Docker', 'Git', 'Figma'] as const
 ---
 
 <SectionContainer id="skills" margin={false} class="my-24">
 	<Title variant="Title">Skills</Title>
 	<Title variant="description">{t('skills.subtitle')} </Title>
 
-	<div class="relative w-full h-auto center flex-col p-6">
+	<div class="relative w-full h-auto flex justify-center items-center flex-col p-6">
 		<VortexCanvas>
-			<div
-				class="my-6 flex justify-center items-start md:items-center flex-wrap flex-row md:flex-col gap-4"
-			>
-				<ul class="center flex-col md:flex-row flex-wrap gap-4">
-					{SkillsFrontend.map((name) => <TechBadge {name} />)}
-				</ul>
-				<ul class="center flex-col md:flex-row flex-wrap gap-4">
-					{SkillsBackend.map((name) => <TechBadge {name} />)}
-				</ul>
-				<ul class="center flex-col md:flex-row flex-wrap gap-4">
-					{SkillsDatabases.map((name) => <TechBadge {name} />)}
-				</ul>
-				<ul class="center flex-col md:flex-row flex-wrap gap-4">
-					{OtherTools.map((name) => <TechBadge {name} />)}
-				</ul>
+			<div class="flex flex-col justify-center md:items-center gap-4">
+				<section class="flex justify-center items-center flex-wrap gap-4">
+					<p class="text-muted text-sm font-semibold">Frontend:</p>
+					<ul class="flex justify-center items-center flex-wrap gap-4">
+						{SkillsFrontend.map((name) => <TechBadge {name} />)}
+					</ul>
+				</section>
+
+				<section class="flex justify-center items-center flex-wrap gap-4 mt-4">
+					<p class="text-muted text-sm font-semibold">Backend:</p>
+					<ul class="flex justify-center items-center flex-wrap gap-4">
+						{SkillsBackend.map((name) => <TechBadge {name} />)}
+					</ul>
+				</section>
+
+				<section class="flex justify-center items-center flex-wrap gap-4 mt-4">
+					<p class="text-muted text-sm font-semibold">Databases:</p>
+					<ul class="flex justify-center items-center flex-wrap gap-4">
+						{SkillsDatabases.map((name) => <TechBadge {name} />)}
+					</ul>
+				</section>
+
+				<section class="flex justify-center flex-col items-center flex-wrap gap-4 mt-4">
+					<p class="text-muted text-sm font-semibold">Other Tools:</p>
+					<ul class="flex justify-center items-center flex-wrap gap-4">
+						{OtherTools.map((name) => <TechBadge {name} />)}
+					</ul>
+				</section>
 			</div>
 		</VortexCanvas>
 	</div>
