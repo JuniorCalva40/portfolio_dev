@@ -2,7 +2,7 @@
 import Title from '../ui/Title.astro'
 import VortexCanvas from '../ui/VortexCanvas.astro'
 import SectionContainer from './SectionContainer.astro'
-import TechBadge from './TechBadge.astro'
+import TechBadge from '../ui/TechBadge.astro'
 import { getLangFromUrl, useTranslations } from '../../i18n/utils'
 import type { SkillName } from '../../types/project'
 
@@ -30,7 +30,7 @@ const SkillsBackend: SkillName[] = [
 
 const SkillsDatabases: SkillName[] = ['PostgreSQL', 'Mongo', 'MySQL'] as const
 
-const OtherTools: SkillName[] = ['Docker', 'Git', 'Figma'] as const
+const OtherTools: SkillName[] = ['Docker', 'Git', 'Figma', 'Wordpress'] as const
 ---
 
 <SectionContainer id="skills" margin={false} class="my-24">

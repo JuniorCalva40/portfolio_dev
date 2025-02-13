@@ -4,7 +4,7 @@ import { Image } from 'astro:assets'
 import Button from './Button.astro'
 import { getLangFromUrl, useTranslations } from '../../i18n/utils'
 import type { SkillName } from '../../types/project'
-import TechBadge from '../sections/TechBadge.astro'
+import TechBadge from '../ui/TechBadge.astro'
 
 interface Props {
 	img: ImageMetadata
@@ -47,7 +47,7 @@ const { class: className, img, title, description, techStack, link, link_source 
 
 	<dialog
 		id={`dialog-${title}`}
-		class="w-full md:w-7/12 h-1/2 fixed rounded-md p-4 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+		class="w-full md:w-7/12 h-1/2 fixed rounded-md p-4 top-1/2 left-1/2"
 	>
 		<div class="grid grid-cols-12 h-full gap-4">
 			<Icon name={'ui/x-circle'} size={25} class="absolute top-2 right-2 cursor-pointer" />

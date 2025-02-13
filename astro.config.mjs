@@ -6,7 +6,10 @@ import mdx from '@astrojs/mdx'
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [tailwindcss(), icon(), mdx()],
+	integrations: [icon(), mdx()],
+	vite: {
+		plugins: [tailwindcss()]
+	},
 	i18n: {
 		defaultLocale: 'es',
 		locales: ['es', 'en']
