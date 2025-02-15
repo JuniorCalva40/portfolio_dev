@@ -6,11 +6,11 @@ interface Props {
 	img: string
 	title: string
 	description: string
-	date: string
+	published_at: string
 	slug: string
 }
 
-const { img, title, description, date, slug } = Astro.props
+const { img, title, description, published_at, slug } = Astro.props
 ---
 
 <article
@@ -21,14 +21,14 @@ const { img, title, description, date, slug } = Astro.props
 			transition:name="fade"
 			width={300}
 			height={300}
-			class="object-cover object-center rounded-lg w-full h-48 hover:scale-105 transition-transform duration-300"
+			class="object-contain object-center rounded-xl w-full hover:scale-105 transition-transform duration-300"
 			src={img}
 			alt="blog"
 		/>
 	</figure>
 	<div class="flex px-2 mt-4 w-full justify-between items-center opacity-80">
 		<Icon name={'ui/calendar'} color={'#fff'} size={20} />
-		<p class="text-white text-sm font-light">{date}</p>
+		<p class="text-white text-sm font-light">{published_at}</p>
 	</div>
 	<div class="px-2 mt-3">
 		<h2 class="my-2 text-white text-lg font-semibold hover:text-blue-400 transition-colors">

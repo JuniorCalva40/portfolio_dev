@@ -1,18 +1,22 @@
 ---
 import BlogSection from '../../components/sections/BlogSection.astro'
 import Experience from '../../components/sections/Experience.astro'
+import Footer from '../../components/sections/Footer.astro'
 import Home from '../../components/sections/Home.astro'
 import Projects from '../../components/sections/Projects.astro'
 import SkillsSection from '../../components/sections/SkillsSection.astro'
+import TopNavigation from '../../components/sections/TopNavigation.astro'
 import Layout from '../../layouts/Layout.astro'
 ---
 
 <Layout title="Junior Calva | Portfolio">
 	<main class="mx-auto">
+		<TopNavigation />
 		<Home />
 		<Experience />
 		<Projects />
 		<SkillsSection />
 		<BlogSection />
+		<Footer />
 	</main>
 </Layout>

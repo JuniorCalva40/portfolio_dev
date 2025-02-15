@@ -1,39 +1,13 @@
 ---
 import { Icon } from 'astro-icon/components'
-import type { Color, SkillName } from '../../types/project'
+import type { SkillName, Color } from '../../constants'
+import { skillsConfig } from '../../constants'
 
 interface Props {
 	name: SkillName
 }
 
 const { name } = Astro.props
-
-const skillsConfig: Record<SkillName, { IconName?: string; color: Color }> = {
-	'Frontend:': { color: 'muted' },
-	'Backend:': { color: 'muted' },
-	'Databases:': { color: 'muted' },
-	'Other Tools:': { color: 'muted' },
-	'Next.js': { IconName: 'logos/nextjs', color: 'white' },
-	React: { IconName: 'logos/react', color: 'cyan' },
-	Tailwind: { IconName: 'logos/tailwind', color: 'cyan' },
-	Astro: { IconName: 'logos/astro', color: 'white' },
-	HTML: { IconName: 'logos/html', color: 'orange' },
-	CSS: { IconName: 'logos/css', color: 'blue' },
-	Javascript: { IconName: 'logos/javascript', color: 'yellow' },
-	Node: { IconName: 'logos/node', color: 'emerald' },
-	Express: { IconName: 'logos/express', color: 'white' },
-	Prisma: { IconName: 'logos/prisma', color: 'white' },
-	Typescript: { IconName: 'logos/typescript', color: 'blue' },
-	Python: { IconName: 'logos/python', color: 'blue' },
-	FastAPI: { IconName: 'logos/fastapi', color: 'emerald' },
-	PostgreSQL: { IconName: 'logos/postgresql', color: 'blue' },
-	Mongo: { IconName: 'logos/mongo', color: 'emerald' },
-	MySQL: { IconName: 'logos/mysql', color: 'sky' },
-	Docker: { IconName: 'logos/docker', color: 'blue' },
-	Git: { IconName: 'logos/git', color: 'orange' },
-	Figma: { IconName: 'logos/figma', color: 'pink' },
-	Wordpress: { IconName: 'logos/wordpress', color: 'blue' }
-}
 
 const { IconName, color } = skillsConfig[name]
 
@@ -52,10 +26,13 @@ const colorVariants: Record<Color, string> = {
 }
 ---
 
-<li
-	class={`${colorVariants[color]} cursor-pointer inline-flex hover:shadow-lg transition-colors ease-in-out duration-100  justify-center items-center bg-white/5 backdrop-blur-2xl px-3 py-1 border-[1px] rounded-lg gap-2`}
+<a
+	target="_blank"
+	rel="nofollow"
+	href={skillsConfig[name].url}
+	class={`${colorVariants[color]} cursor-pointer inline-flex hover:shadow-lg transition-colors ease-in-out duration-100  justify-center items-center bg-white/5 backdrop-blur-2xl px-3 py-1 border-[1px] rounded-lg gap-2 `}
 >
 	{IconName && <Icon class={'text-black'} name={IconName} size={20} />}
 
 	<span class="font-medium text-sm select-none">{name}</span>
-</li>
+</a>
