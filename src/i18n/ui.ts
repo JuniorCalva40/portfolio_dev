@@ -47,7 +47,7 @@ export const ui = {
 				rever: {
 					title: 'Rever AI',
 					description:
-						'Plataforma de generación de imágenes basada en IA utilizando modelos de Stable Diffusion. Implementada con una arquitectura moderna que combina Next.js para el frontend y FastAPI para el backend, ofreciendo una experiencia fluida en la generación y gestión de imágenes.'
+						'Arcanume es una plataforma creada con WordPress y LearnPress, personalizada para una academia de cocina. Permite gestionar cursos, estudiantes y contenido educativo de manera intuitiva, brindando una experiencia de aprendizaje única y enfocada en el ámbito culinario.'
 				},
 				mapa_crime_ec: {
 					title: 'Mapa de Crimen Ecuador',
@@ -56,9 +56,9 @@ export const ui = {
 				},
 
 				portfolio: {
-					title: 'Portfolio Personal',
+					title: 'Netmall Markeplace',
 					description:
-						'Sitio web personal desarrollado con Astro y TailwindCSS, optimizado para rendimiento y SEO. Implementa internacionalización, animaciones fluidas y una interfaz adaptativa para mostrar proyectos y habilidades técnicas.'
+						'Netmall es una web app construida con Next.js y Tailwind CSS, optimizada para el rendimiento y SEO. Es un marketplace de tecnología que incluye funcionalidades de gestión de productos, permitiendo a los usuarios comprar y vender productos tecnológicos fácilmente. La app cuenta con un dashboard intuitivo para gestionar anuncios, realizar un seguimiento de ventas y ver análisis. Utiliza PostgreSQL para la gestión de bases de datos, con Prisma como ORM, asegurando un manejo eficiente de los datos y una integración fluida.'
 				}
 			}
 		},
@@ -109,9 +109,9 @@ export const ui = {
 
 			items: {
 				rever: {
-					title: 'Rever AI',
+					title: 'Arcanume',
 					description:
-						'AI image generation platform using Stable Diffusion models. Implemented with a modern architecture combining Next.js for frontend and FastAPI for backend, offering a smooth experience in image generation and management.'
+						'Arcanume is a platform built with WordPress and LearnPress, customized for a culinary academy. It allows for intuitive management of courses, students, and educational content, providing a unique learning experience focused on the culinary field.'
 				},
 				mapa_crime_ec: {
 					title: 'Ecuador Crime Map Heat',
@@ -119,10 +119,10 @@ export const ui = {
 						'This web provides a heat map of crime in Ecuador, allowing users to view and analyze crime data. It helps users stay informed and take appropriate safety measures. The frontend architecture is React + Mantine UI and the backend is FastAPI + Pandas to analyze the data, the source of the data is from open data Ecuador.'
 				},
 
-				portfolio: {
+				'Netmall Marketplace Tech': {
 					title: 'Personal Portfolio',
 					description:
-						'Personal website developed with Astro and TailwindCSS, optimized for performance and SEO. Implements internationalization, smooth animations, and an adaptive interface to showcase projects and technical skills.'
+						"Netmall is a web app built with Next.js and Tailwind CSS, optimized for performance and SEO. It's a tech marketplace that includes product management features, enabling users to easily buy and sell tech products. The app uses PostgreSQL for database management, with Prisma as the ORM, ensuring efficient data handling and seamless integration."
 				}
 			}
 		},

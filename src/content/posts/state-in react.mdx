@@ -1,0 +1,258 @@
+---
+title: 'Manejo de estado en React: Una guía práctica'
+img: '/posts/cover_post_2_es.webp'
+description: 'Recomendaciones para manejar el estado de tu aplicación React dependiendo del caso de uso'
+published_at: '2025-02-13'
+category: 'React'
+slug: 'manejo-de-estado-en-react'
+---
+
+Si alguna vez has sentido que necesitas un mapa para navegar entre todas las opciones de manejo de estado en React, ¡no estás solo! En este post vamos a despejar tus dudas con ejemplos prácticos de un e-commerce.
+
+## 1. **Estado del Servidor: TanStack Query** 🚀
+
+**¿Cuándo usarlo?** Para cualquier dato que venga de tu backend (API REST o GraphQL).
+
+### Ejemplos en un e-commerce:
+
+- Listado de productos
+- Detalle de producto y su disponibilidad
+- Reseñas de usuarios
+- Historial de pedidos
+
+TanStack Query es robusto porque:
+
+- 🔄 Mantiene cache y evita peticiones duplicadas
+- 🔍 Se integra perfectamente con paginación y filtrados
+- 🔮 Revalida automáticamente cuando es necesario
+
+```jsx
+import { useQuery } from '@tanstack/react-query'
+
+export const FeaturedProducts = () => {
+	const {
+		data: products,
+		isLoading,
+		error
+	} = useQuery({
+		queryKey: ['featured-products'],
+		queryFn: async () => {
+			const res = await fetch('https://api.tutienda.com/productos/destacados')
+			if (!res.ok) throw new Error('Error al cargar productos')
+			return res.json()
+		},
+		staleTime: 5 * 60 * 1000 // Los datos se consideran frescos por 5 minutos
+	})
+
+	if (isLoading) return <ProductsSkeleton />
+	if (error) return <ErrorMessage message="¡Ups! No pudimos cargar los productos" />
+
+	return (
+		<div className="grid-products">
+			{products.map((product) => (
+				<ProductCard key={product.id} product={product} />
+			))}
+		</div>
+	)
+}
+```
+
+> 🔥 **Pro tip:** No necesitas combinar TanStack Query con Zustand en la mayoría de casos. ¿Por qué? Porque TanStack Query ya maneja perfectamente el caché. Solo añade Zustand si realmente necesitas manipular esos datos de formas complejas.
+
+## 2. **Estado en la URL: El poder subestimado** 🔗
+
+**¿Cuándo usarlo?** Para todo lo que el usuario debería poder compartir o guardar en marcadores.
+
+### Ejemplos en un e-commerce:
+
+- 🔍 Filtros de búsqueda (categoría, precio, marca)
+- 📄 Paginación
+- 🔢 Opciones de de vista (grid/lista)
+- 🔤 Ordenamiento de productos
+
+```jsx
+import { useQueryStates, parseAsString, parseAsInteger } from 'nuqs'
+
+export function ProductSearch() {
+	const [queryParams, setQueryParams] = useQueryStates({
+		category: parseAsString.withDefault('all'),
+		minPrice: parseAsInteger.withDefault(0),
+		maxPrice: parseAsInteger.withDefault(1000),
+		sort: parseAsString.withDefault('popularity')
+	})
+
+	// Ahora tu URL se ve como: ?category=electronics&minPrice=100&maxPrice=500&sort=price-asc
+
+	return (
+		<>
+			<FilterSidebar filters={queryParams} onChange={setQueryParams} />
+
+			<ProductGrid filters={queryParams} onPageChange={(page) => setQueryParams({ page })} />
+		</>
+	)
+}
+```
+
+> 💡 **¿Por qué es tan bueno?** Cuando alguien comparte un link "Mira estos auriculares que filtré por menos de $50", la persona que lo recibe verá exactamente los mismos resultados. Además, puedes usar el botón de atrás del navegador para volver a filtros anteriores.
+
+## 3. **Estado Local: El clásico useState()** 💼
+
+**¿Cuándo usarlo?** Para estado temporal que solo importa en un componente específico.
+
+### Ejemplos en un e-commerce:
+
+- 🔘 Toggle para mostrar/ocultar descripción de producto
+- 📝 Formularios antes de enviarlos
+- 🖼️ Imagen seleccionada en un carrusel
+- 🛒 Cantidad seleccionada de un producto (antes de añadir al carrito)
+
+```jsx
+function ProductImageGallery({ images }) {
+	const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+	return (
+		<div className="product-gallery">
+			<img
+				src={images[currentImageIndex]}
+				alt={`Vista ${currentImageIndex + 1}`}
+				className="main-image"
+			/>
+
+			<div className="thumbnails">
+				{images.map((img, index) => (
+					<button
+						key={index}
+						onClick={() => setCurrentImageIndex(index)}
+						className={currentImageIndex === index ? 'active' : ''}
+					>
+						<img src={img} alt={`Miniatura ${index + 1}`} />
+					</button>
+				))}
+			</div>
+		</div>
+	)
+}
+```
+
+> ⚠️ **Regla práctica:** Si más de un componente necesita acceder o modificar el mismo estado, probablemente useState() no sea la mejor opción. Hora de subir de nivel...
+
+## 4. **Estado Global: Zustand para la victoria** 🏆
+
+**¿Cuándo usarlo?** Para estado que debe compartirse entre componentes no relacionados directamente.
+
+### Ejemplos en un e-commerce:
+
+- 🛒 Carrito de compras
+- 👤 Datos del usuario autenticado
+- 🔔 Notificaciones
+- 💰 Resumen de total a pagar
+
+```jsx
+import { create } from 'zustand'
+
+// Creamos nuestro store
+const useCartStore = create((set) => ({
+	items: [],
+	itemCount: 0,
+	total: 0,
+
+	// Acciones
+	addItem: (product, quantity = 1) =>
+		set((state) => {
+			const existingItem = state.items.find((item) => item.id === product.id)
+
+			if (existingItem) {
+				// Actualizar cantidad si ya existe
+				const updatedItems = state.items.map((item) =>
+					item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item
+				)
+				return {
+					items: updatedItems,
+					itemCount: state.itemCount + quantity,
+					total: state.total + product.price * quantity
+				}
+			} else {
+				// Añadir nuevo item
+				return {
+					items: [...state.items, { ...product, quantity }],
+					itemCount: state.itemCount + quantity,
+					total: state.total + product.price * quantity
+				}
+			}
+		}),
+
+	removeItem: (productId) =>
+		set((state) => {
+			const itemToRemove = state.items.find((item) => item.id === productId)
+			if (!itemToRemove) return state
+
+			return {
+				items: state.items.filter((item) => item.id !== productId),
+				itemCount: state.itemCount - itemToRemove.quantity,
+				total: state.total - itemToRemove.price * itemToRemove.quantity
+			}
+		}),
+
+	clearCart: () => set({ items: [], itemCount: 0, total: 0 })
+}))
+
+// Componente que usa el carrito
+function AddToCartButton({ product }) {
+	const [quantity, setQuantity] = useState(1)
+	const addItem = useCartStore((state) => state.addItem)
+
+	return (
+		<div>
+			<QuantitySelector value={quantity} onChange={setQuantity} />
+			<button
+				onClick={() => {
+					addItem(product, quantity)
+					toast.success(`¡${product.name} añadido al carrito!`)
+				}}
+			>
+				Añadir al carrito
+			</button>
+		</div>
+	)
+}
+
+// Componente en otra parte de la app
+function CartIcon() {
+	const itemCount = useCartStore((state) => state.itemCount)
+
+	return (
+		<Link to="/cart">
+			<div className="cart-icon">
+				<ShoppingBagIcon />
+				{itemCount > 0 && <span className="badge">{itemCount}</span>}
+			</div>
+		</Link>
+	)
+}
+```
+
+> 🚀 **Por qué Zustand es genial:**
+>
+> - Simple y no invasivo - no necesitas Providers
+> - Funciona con cualquier parte de tu app
+> - Menos boilerplate que Redux
+> - Perfecto para estados de UI compartidos
+
+## 📋 Tabla comparativa: ¿Cuándo usar cada opción?
+
+| Estrategia         | Usa cuando necesites...                                              | Evita cuando...                                     | Ejemplos en e-commerce                              |
+| ------------------ | -------------------------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| **TanStack Query** | Datos de APIs, caché optimizada, revalidaciones                      | Estado de UI puro, datos que no vienen del servidor | Catálogo de productos, reseñas, datos de usuario    |
+| **Estado en URL**  | Compartir enlaces, mantener estado en recarga, navegar con historial | Datos privados o sensibles                          | Filtros, paginación, configuración de vista         |
+| **useState**       | Estado simple y aislado en un componente                             | Compartir ese estado con otros componentes          | Formularios locales, toggles UI, selección temporal |
+| **Zustand**        | Estado compartido entre múltiples componentes                        | El estado solo es relevante para un componente      | Carrito, autenticación, preferencias globales       |
+
+## 🎯 Conclusión:
+
+1. **Combina estrategias:** En algunos casos donde la lógica se maneja en el servidor, TanStack Query es genial y puede cubrir la mayoría de los casos. En otros casos, tendrás que combinarlo con un state management como Zustand, por ejemplo, cuando necesites mantener estados compartidos en el cliente, como el estado del carrito de compras o la autenticación del usuario. También podrías usar React Context para valores que rara vez cambian, como temas o configuraciones globales. La clave está en saber dónde aplicar cada una.
+
+2. **Manten la simplicidad:** No uses Zustand si useState es suficiente. No uses TanStack Query para datos que no vienen del servidor.
+
+3. **Optimiza la experiencia:** El estado en URL mejora la experiencia del usuario permitiendo compartir y guardar estados específicos.
+
+4. **Piensa en la escala:** Lo que funciona para una tienda pequeña puede no ser suficiente cuando tienes miles de productos y usuarios.

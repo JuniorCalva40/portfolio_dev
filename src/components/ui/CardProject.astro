@@ -3,8 +3,8 @@ import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
 import Button from './Button.astro'
 import { getLangFromUrl, useTranslations } from '../../i18n/utils'
-import type { SkillName } from '../../types/project'
 import TechBadge from '../ui/TechBadge.astro'
+import type { SkillName } from '../../constants'
 
 interface Props {
 	img: ImageMetadata
@@ -30,16 +30,21 @@ const { class: className, img, title, description, techStack, link, link_source 
 		/>
 		<div>
 			<Button id={`open-dialog-${title}`} class="absolute right-12 -bottom-1" variant="gradient"
-				>{t('projects.card.info')}</Button
-			>
+				>{t('projects.card.info')}
+			</Button>
 
-			<button class="absolute -bottom-2 -right-1 z-10 rounded-full p-1 bg-secondary">
+			<a
+				target="_blank"
+				rel="noopener noreferrer"
+				href={link}
+				class="absolute -bottom-3 right-0 z-10 rounded-full p-1 bg-secondary"
+			>
 				<div
-					class="bg-gradient-to-r from-accent to-primary p-2 hover:opacity-90 duration-100 transition ease-in-out rounded-full"
+					class="inline-block bg-gradient-to-r from-accent to-primary p-2 hover:opacity-90 duration-100 transition ease-in-out rounded-full"
 				>
 					<Icon name={'ui/arrow-up-right'} size={20} color={'white'} />
 				</div>
-			</button>
+			</a>
 		</div>
 
 		<p class="text-muted text-base absolute z-10 left-3 bottom-0">{title}</p>

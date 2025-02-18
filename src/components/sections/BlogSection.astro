@@ -10,7 +10,7 @@ const posts = await getCollection('posts')
 <div id="blog" class="bg-gradient-to-b from-secondary via-violet-950/50 to-secondary py-1">
 	<SectionContainer margin>
 		<Title variant="Title">Blog</Title>
-		<div class="flex mt-4 justify-between items-center">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
 			{posts.map((post) => <CardBlog {...post.data} slug={post.slug} />)}
 		</div>
 	</SectionContainer>

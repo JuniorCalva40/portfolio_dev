@@ -49,3 +49,10 @@ html {
 .gradient-background {
 	background: radial-gradient(circle, #461ddce3, #5e26ce5d, #89898915);
 }
+
+.metal-text {
+	background: linear-gradient(90deg, var(--color-primary), #4529d4);
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+}
