@@ -52,7 +52,7 @@ const { class: className, img, title, description, techStack, link, link_source 
 
 	<dialog
 		id={`dialog-${title}`}
-		class="w-full md:w-7/12 h-1/2 fixed rounded-md p-4 top-1/2 left-1/2"
+		class="w-full lg:w-7/12 xl:w-7/12 h-screen md:h-1/2 fixed rounded-md p-4 top-1/2 left-1/2"
 	>
 		<div class="grid grid-cols-12 h-full gap-4">
 			<Icon name={'ui/x-circle'} size={25} class="absolute top-2 right-2 cursor-pointer" />
@@ -97,14 +97,25 @@ const { class: className, img, title, description, techStack, link, link_source 
 				const dialog = document.getElementById(dialogId) as HTMLDialogElement
 				const closeButton = dialog.querySelector('svg') as SVGElement
 
+				const lockScroll = () => {
+					document.body.style.overflow = 'hidden'
+					document.documentElement.style.overflow = 'hidden'
+				}
+
+				const unlockScroll = () => {
+					document.body.style.overflow = ''
+					document.documentElement.style.overflow = ''
+				}
+
 				button.addEventListener('click', () => {
 					dialog.showModal()
-					document.body.style.overflow = 'hidden'
+
+					setTimeout(lockScroll, 10)
 				})
 
 				closeButton.addEventListener('click', () => {
 					dialog.close()
-					document.body.style.overflow = 'auto'
+					unlockScroll()
 				})
 
 				dialog.addEventListener('click', (e) => {
@@ -116,8 +127,14 @@ const { class: className, img, title, description, techStack, link, link_source 
 						e.clientY > dialogDimensions.bottom
 					) {
 						dialog.close()
-						document.body.style.overflow = 'auto'
+						unlockScroll()
 					}
+				})
+
+				dialog.addEventListener('cancel', (e) => {
+					e.preventDefault()
+					dialog.close()
+					unlockScroll()
 				})
 			})
 		})
@@ -173,7 +190,7 @@ const { class: className, img, title, description, techStack, link, link_source 
 		}
 
 		dialog::backdrop {
-			background: rgba(0, 0, 0, 0.606);
+			background: rgba(0, 0, 0, 0.692);
 			opacity: 0;
 			transition: opacity 0.3s ease;
 		}

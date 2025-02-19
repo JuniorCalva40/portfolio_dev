@@ -4,7 +4,7 @@ import VortexCanvas from '../ui/VortexCanvas.astro'
 import SectionContainer from './SectionContainer.astro'
 import TechBadge from '../ui/TechBadge.astro'
 import { getLangFromUrl, useTranslations } from '../../i18n/utils'
-import type { SkillName } from '../../types/project'
+import type { SkillName } from '../../constants'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)

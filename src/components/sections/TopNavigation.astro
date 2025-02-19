@@ -13,7 +13,7 @@ const t = useTranslations(lang)
 		<Icon name="logos/brandLogo" size={60} />
 	</a>
 
-	<div class="flex justify-between mx-4 items-center gap-8">
+	<div class="flex justify-between mx-4 items-center gap-3 md:gap-8">
 		<a href="#projects">{t('nav.projects')}</a>
 		<a href="#skills">{t('nav.skills')}</a>
 		<a href="#blog">{t('nav.blog')}</a>
@@ -28,7 +28,7 @@ const t = useTranslations(lang)
 	</div>
 </nav>
 
-<script is:inline>
+<script>
 	document.addEventListener('astro:page-load', () => {
 		const iconTranslate = document.getElementById('button-translate')
 		const languagePicker = document.getElementById('language-picker')
@@ -40,7 +40,7 @@ const t = useTranslations(lang)
 			})
 
 			document.addEventListener('click', (e) => {
-				if (!iconTranslate.contains(e.target)) {
+				if (!iconTranslate.contains(e.target as Node)) {
 					languagePicker.classList.add('hidden')
 				}
 			})

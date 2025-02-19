@@ -21,7 +21,14 @@ export function useTranslations(lang: keyof typeof ui) {
 }
 
 function getNestedValue(obj: any, path: string): string {
-	return path.split('.').reduce((acc, part) => acc[part], obj)
+	return path.split('.').reduce((acc, part) => {
+		if (acc && acc[part] !== undefined) {
+			return acc[part]
+		} else {
+			console.error(`⚠️ Clave no encontrada: ${path}`)
+			return ''
+		}
+	}, obj)
 }
 
 export function useTranslatedPath(lang: keyof typeof ui) {

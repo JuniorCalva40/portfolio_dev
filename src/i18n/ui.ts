@@ -41,7 +41,7 @@ export const ui = {
 			subtitle: 'Proyectos destacados: de la idea a la implementación',
 			card: {
 				source: 'Código fuente',
-				info: 'Más información'
+				info: 'Más info'
 			},
 			items: {
 				rever: {
@@ -55,7 +55,7 @@ export const ui = {
 						'Esta web proporciona un mapa de calor de crimen en Ecuador, permitiendo a los usuarios ver y analizar datos de crimen. Ayuda a los usuarios a estar informados y tomar medidas de seguridad apropiadas. La arquitectura de frontend con React + Mantine UI y backend con FastAPI + Pandas para analizar los datos la fuente proviene de datos abiertos Ecuador.'
 				},
 
-				portfolio: {
+				'Netmall Marketplace': {
 					title: 'Netmall Markeplace',
 					description:
 						'Netmall es una web app construida con Next.js y Tailwind CSS, optimizada para el rendimiento y SEO. Es un marketplace de tecnología que incluye funcionalidades de gestión de productos, permitiendo a los usuarios comprar y vender productos tecnológicos fácilmente. La app cuenta con un dashboard intuitivo para gestionar anuncios, realizar un seguimiento de ventas y ver análisis. Utiliza PostgreSQL para la gestión de bases de datos, con Prisma como ORM, asegurando un manejo eficiente de los datos y una integración fluida.'
@@ -118,8 +118,7 @@ export const ui = {
 					description:
 						'This web provides a heat map of crime in Ecuador, allowing users to view and analyze crime data. It helps users stay informed and take appropriate safety measures. The frontend architecture is React + Mantine UI and the backend is FastAPI + Pandas to analyze the data, the source of the data is from open data Ecuador.'
 				},
-
-				'Netmall Marketplace Tech': {
+				'Netmall Marketplace': {
 					title: 'Personal Portfolio',
 					description:
 						"Netmall is a web app built with Next.js and Tailwind CSS, optimized for performance and SEO. It's a tech marketplace that includes product management features, enabling users to easily buy and sell tech products. The app uses PostgreSQL for database management, with Prisma as the ORM, ensuring efficient data handling and seamless integration."

@@ -68,6 +68,7 @@ const { Content } = await render(post)
 				{/* Featured Image */}
 				<div class="mb-12">
 					<Image
+						transition:name={title}
 						src={img}
 						alt={title}
 						class="w-full rounded-2xl shadow-xl object-contain md:object-cover md:h-[400px]"

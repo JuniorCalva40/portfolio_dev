@@ -18,7 +18,7 @@ const { img, title, description, published_at, slug } = Astro.props
 >
 	<figure class="w-full overflow-hidden rounded-lg">
 		<Image
-			transition:name="fade"
+			transition:name={title}
 			width={300}
 			height={300}
 			class="object-contain object-center rounded-xl w-full hover:scale-105 transition-transform duration-300"
