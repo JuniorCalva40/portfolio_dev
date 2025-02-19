@@ -2,19 +2,24 @@
 import { Icon } from 'astro-icon/components'
 import Title from '../ui/Title.astro'
 import { getLangFromUrl, useTranslations } from '../../i18n/utils'
+import { SocialNetworks } from '../../constants'
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 ---
 
-<footer class="my-16 max-w-4xl md:mx-auto mx-5">
+<footer class="mt-24 mb-8 max-w-4xl md:mx-auto mx-5">
 	<Title variant="Title">{t('footer.title')}</Title>
 	<p class="text-muted text-sm mt-6 max-w-2xl">
 		{t('footer.subtitle')}
 	</p>
 
 	<div class="my-4 flex justify-start gap-4 items-center">
-		<Icon size={25} name={'logos/linkedin'} />
-		<Icon size={25} name={'logos/github'} />
+		<a target="_blank" rel="noopener" href={SocialNetworks.LINKEDIN} class="cursor-pointer">
+			<Icon size={25} name={'logos/linkedin'} />
+		</a>
+		<a target="_blank" rel="noopener" href={SocialNetworks.GITHUB} class="cursor-pointer">
+			<Icon size={25} name={'logos/github'} />
+		</a>
 	</div>
 	<p class="text-muted text-sm text-center">© {new Date().getFullYear()} Junior Calva</p>
 </footer>

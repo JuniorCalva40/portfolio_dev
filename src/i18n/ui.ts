@@ -55,10 +55,10 @@ export const ui = {
 						'Esta web proporciona un mapa de calor de crimen en Ecuador, permitiendo a los usuarios ver y analizar datos de crimen. Ayuda a los usuarios a estar informados y tomar medidas de seguridad apropiadas. La arquitectura de frontend con React + Mantine UI y backend con FastAPI + Pandas para analizar los datos la fuente proviene de datos abiertos Ecuador.'
 				},
 
-				'Netmall Marketplace': {
-					title: 'Netmall Markeplace',
+				'Website UAO': {
+					title: 'Sitio Web UAO',
 					description:
-						'Netmall es una web app construida con Next.js y Tailwind CSS, optimizada para el rendimiento y SEO. Es un marketplace de tecnología que incluye funcionalidades de gestión de productos, permitiendo a los usuarios comprar y vender productos tecnológicos fácilmente. La app cuenta con un dashboard intuitivo para gestionar anuncios, realizar un seguimiento de ventas y ver análisis. Utiliza PostgreSQL para la gestión de bases de datos, con Prisma como ORM, asegurando un manejo eficiente de los datos y una integración fluida.'
+						'Web diseñada para brindar apoyo a personas afectadas por la crisis en Ucrania. Construida con Astro, HTML, CSS y JavaScript, esta web ofrece información, recursos y formas de contribuir con donaciones, voluntariado y ayuda humanitaria'
 				}
 			}
 		},
@@ -68,7 +68,8 @@ export const ui = {
 		},
 		footer: {
 			title: 'Contacto',
-			subtitle: 'Estoy abierto a nuevas oportunidades'
+			subtitle:
+				'Me encanta crear soluciones digitales que no solo destacan visualmente, sino que también abren nuevas oportunidades de crecimiento.'
 		}
 	},
 	en: {
@@ -118,10 +119,10 @@ export const ui = {
 					description:
 						'This web provides a heat map of crime in Ecuador, allowing users to view and analyze crime data. It helps users stay informed and take appropriate safety measures. The frontend architecture is React + Mantine UI and the backend is FastAPI + Pandas to analyze the data, the source of the data is from open data Ecuador.'
 				},
-				'Netmall Marketplace': {
-					title: 'Personal Portfolio',
+				'Website UAO': {
+					title: 'Website UAO',
 					description:
-						"Netmall is a web app built with Next.js and Tailwind CSS, optimized for performance and SEO. It's a tech marketplace that includes product management features, enabling users to easily buy and sell tech products. The app uses PostgreSQL for database management, with Prisma as the ORM, ensuring efficient data handling and seamless integration."
+						'Web platform designed to support people affected by the crisis in Ukraine. Built with Astro, HTML, CSS, and JavaScript, this site provides information, resources, and ways to contribute through donations, volunteering, and humanitarian aid'
 				}
 			}
 		},
@@ -131,7 +132,8 @@ export const ui = {
 		},
 		footer: {
 			title: 'Contact',
-			subtitle: 'Open to new opportunities'
+			subtitle:
+				'I love creating digital solutions that not only stand out visually but also open new opportunities for growth'
 		}
 	}
 } as const
