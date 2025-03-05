@@ -5,9 +5,9 @@ export const SocialNetworks = {
 
 //DATA for component tech Badge
 // prettier-ignore
-export type Color = "blue" | "white" | "yellow" | "red" | "sky" | "pink" | "violet" | "emerald" | "cyan" | "orange" | "muted";
+export type Color = "blue" | "white" | "yellow" | "red" | "sky" | "pink" | "violet" | "emerald"  |"green"| "cyan" | "orange" | "muted" |'indigo';
 // prettier-ignore
-export type SkillName = 'Frontend:' | 'Backend:' | 'Databases:' | 'Other Tools:' | 'Next.js' | 'React' | 'Tailwind' | 'Astro' | 'HTML' | 'CSS' | 'Javascript' | 'Node' | 'Express' | 'Prisma' | 'Typescript' | 'Python' | 'FastAPI' | 'PostgreSQL' | 'Mongo' | 'MySQL' | 'Docker' | 'Git' | 'Figma' | 'Wordpress';
+export type SkillName = 'Frontend:' | 'Backend:' | 'Databases:' | 'Other Tools:' | 'Next.js' | 'Vue' |'React' | 'Tailwind' | 'Astro' | 'HTML' | 'CSS' | 'Javascript' | 'Node' | 'Express' | 'Prisma' | 'Typescript' | 'Python' | 'FastAPI' | 'PostgreSQL' | 'Mongo' | 'MySQL' | 'Docker' | 'Git' | 'Figma' | 'Wordpress' | 'PHP'
 
 type BaseSkill = {
 	color: Color
@@ -48,6 +48,7 @@ export const skillsConfig: Record<SkillName, BaseSkill> = {
 		url: 'https://www.typescriptlang.org/'
 	},
 	Python: { IconName: 'logos/python', color: 'blue', url: 'https://www.python.org/' },
+	PHP: { IconName: 'logos/php', color: 'indigo', url: 'https://www.php.net/' },
 	FastAPI: { IconName: 'logos/fastapi', color: 'emerald', url: 'https://fastapi.tiangolo.com/' },
 	PostgreSQL: { IconName: 'logos/postgresql', color: 'blue', url: 'https://www.postgresql.org/' },
 	Mongo: { IconName: 'logos/mongo', color: 'emerald', url: 'https://www.mongodb.com/' },
@@ -55,5 +56,6 @@ export const skillsConfig: Record<SkillName, BaseSkill> = {
 	Docker: { IconName: 'logos/docker', color: 'blue', url: 'https://www.docker.com/' },
 	Git: { IconName: 'logos/git', color: 'orange', url: 'https://git-scm.com/' },
 	Figma: { IconName: 'logos/figma', color: 'pink', url: 'https://www.figma.com/' },
-	Wordpress: { IconName: 'logos/wordpress', color: 'blue', url: 'https://wordpress.org/' }
+	Wordpress: { IconName: 'logos/wordpress', color: 'blue', url: 'https://wordpress.org/' },
+	Vue: { IconName: 'logos/vue', color: 'green', url: 'https://vuejs.org/' }
 }
