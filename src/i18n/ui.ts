@@ -128,6 +128,11 @@ export const ui = {
 					title: 'Website UAO',
 					description:
 						'Web platform designed to support people affected by the crisis in Ukraine. Built with Astro, HTML, CSS, and JavaScript, this site provides information, resources, and ways to contribute through donations, volunteering, and humanitarian aid'
+				},
+				habitnow: {
+					title: 'HabitNow',
+					description:
+						'An app to manage daily habits and tasks. It allows users to organize and track their activities, with reminders and personalized statistics to foster the achievement of healthy goals and habits.'
 				}
 			}
 		},
