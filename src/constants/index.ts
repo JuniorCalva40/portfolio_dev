@@ -7,7 +7,7 @@ export const SocialNetworks = {
 // prettier-ignore
 export type Color = "blue" | "white" | "yellow" | "red" | "sky" | "pink" | "violet" | "emerald"  |"green"| "cyan" | "orange" | "muted" |'indigo';
 // prettier-ignore
-export type SkillName = 'Frontend:' | 'Backend:' | 'Databases:' | 'Other Tools:' | 'Next.js' | 'Vue' |'React' | 'Tailwind' | 'Astro' | 'HTML' | 'CSS' | 'Javascript' | 'Node' | 'Express' | 'Prisma' | 'Typescript' | 'Python' | 'FastAPI' | 'PostgreSQL' | 'Mongo' | 'MySQL' | 'Docker' | 'Git' | 'Figma' | 'Wordpress' | 'PHP'
+export type SkillName = 'Frontend:' | 'Backend:' | 'Databases:' | 'Other Tools:' | 'Next.js' | 'Vue' |'React' | 'Tailwind' | 'Astro' | 'HTML' | 'CSS' | 'Javascript' | 'Node' | 'Express' | 'Prisma' | 'Typescript' | 'Python' | 'FastAPI' | 'PostgreSQL' | 'Mongo' | 'MySQL' | 'Docker' | 'Git' | 'Figma' | 'Wordpress' | 'PHP'| "Supabase" | "Firebase"
 
 type BaseSkill = {
 	color: Color
@@ -57,5 +57,7 @@ export const skillsConfig: Record<SkillName, BaseSkill> = {
 	Git: { IconName: 'logos/git', color: 'orange', url: 'https://git-scm.com/' },
 	Figma: { IconName: 'logos/figma', color: 'pink', url: 'https://www.figma.com/' },
 	Wordpress: { IconName: 'logos/wordpress', color: 'blue', url: 'https://wordpress.org/' },
-	Vue: { IconName: 'logos/vue', color: 'green', url: 'https://vuejs.org/' }
+	Vue: { IconName: 'logos/vue', color: 'green', url: 'https://vuejs.org/' },
+	Supabase: { IconName: 'logos/supabase', color: 'green', url: 'https://supabase.com/' },
+	Firebase: { IconName: 'logos/firebase', color: 'orange', url: 'https://firebase.google.com/' }
 }

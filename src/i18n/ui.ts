@@ -44,6 +44,11 @@ export const ui = {
 				info: 'Más info'
 			},
 			items: {
+				habitnow: {
+					title: 'HabitNow',
+					description:
+						'Aplicación para gestionar hábitos y tareas diarias. Permite a los usuarios organizar y dar seguimiento a sus actividades, con recordatorios y estadísticas personalizadas para fomentar el cumplimiento de metas y hábitos saludables.'
+				},
 				rever: {
 					title: 'Rever AI',
 					description:

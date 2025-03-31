@@ -3,6 +3,7 @@ import { type ImageMetadata } from 'astro'
 import uao from '../../assets/imgs/uao.webp'
 import arcanume from '../../assets/imgs/arcanume.webp'
 import map_crime from '../../assets/imgs/map_crime_ec.webp'
+import habitnow from '../../assets/imgs/habitnow.webp'
 import { getLangFromUrl, useTranslations } from '../../i18n/utils'
 import CardProject from '../ui/CardProject.astro'
 import Title from '../ui/Title.astro'
@@ -23,6 +24,13 @@ interface Project {
 }
 
 const projects: Project[] = [
+	{
+		title: 'Habitnow',
+		description: t('projects.items.habitnow.description'),
+		techStack: ['React', 'Firebase'],
+		img: habitnow,
+		link: 'https://play.google.com/store/apps/details?id=com.habitnow&hl=es_EC&pli=1'
+	},
 	{
 		title: 'Arcanume',
 		description: t('projects.items.rever.description'),
@@ -48,23 +56,20 @@ const projects: Project[] = [
 	}
 ] as const
 
-const gridClasses = [
-	'md:col-span-2 row-span-1 md:row-span-full place-content-center',
-	'md:col-span-2 row-span-1',
-	'md:col-span-2'
-]
+// const gridClasses = [
+// 	'md:col-span-2 row-span-1 md:row-span-full place-content-center',
+// 	'md:col-span-2 row-span-1',
+// 	'md:col-span-2'
+// ]
 ---
 
 <SectionContainer id="projects" margin class="my-24">
 	<Title variant="Title">{t('projects.title')}</Title>
 	<Title variant="description">{t('projects.subtitle')}</Title>
-	<div
-		class="grid grid-rows-3 md:grid-cols-4 md:h-[60%] h-[42rem] md:grid-rows-2 gap-10 md:gap-3 mt-8"
-	>
+	<div class="grid grid-cols-2 gap-4 mt-6">
 		{
 			projects.map((project, index) => (
 				<CardProject
-					class={gridClasses[index]}
 					img={project.img}
 					title={project.title}
 					description={project.description}
